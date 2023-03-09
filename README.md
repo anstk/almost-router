@@ -1,5 +1,13 @@
 # Almost Router
 
+<!--
+https://shields.io/category/build
+-->
+
+[![build](https://github.com/andenv/almost-router/actions/workflows/build.yml/badge.svg)](https://github.com/andenv/almost-router/actions/workflows/build.yml)
+[![lint](https://github.com/andenv/almost-router/actions/workflows/lint.yml/badge.svg)](doc/lint.md)
+[![lint](https://github.com/andenv/almost-router/actions/workflows/misspell.yml/badge.svg)](https://github.com/andenv/almost-router/actions/workflows/misspell.yml)
+
 For study purposes only.
 
 Just a very simple "router", a WIP (work in progress), to evolve the idea in the future and maybe create a usable router.
