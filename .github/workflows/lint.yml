@@ -1,0 +1,68 @@
+name: lint
+run-name: lint
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  # workflow_dispatch: trigger manually
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    #- develop
+  pull_request:
+    branches:
+    - main
+    #- develop
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # The "build" workflow
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+    
+    # Setup Go
+    - name: Setup Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 'stable' # The Go version to download (if necessary) and use.
+        cache: true
+    
+    # Install all the dependencies
+    - name: Install dependencies
+      run: |
+        # TODO: cache these dependencies
+        go install github.com/mgechev/revive@latest
+        go install github.com/kisielk/errcheck@latest
+        go install honnef.co/go/tools/cmd/staticcheck@latest
+      
+    # Run lints
+    - name:  go vet ./...
+      run: |
+        # Finds subtle issues where your code may not work as intended.
+        v=$(go vet ./...)
+        if [ -n "$v" ]; then echo "$v"; exit 1; fi
+        
+    - name:  revive ./...
+      run: |
+        # Makes code style recommendations - Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint. https://github.com/mgechev/revive
+        v=$(revive ./...)
+        if [ -n "$v" ]; then echo "$v"; exit 1; fi
+        
+    - name:  errcheck ./...
+      run: |
+        # Check for unchecked errors in go programs. These unchecked errors can be critical bugs in some cases. https://github.com/kisielk/errcheck
+        v=$(errcheck ./...)
+        if [ -n "$v" ]; then echo "$v"; exit 1; fi
+        
+    - name:  staticcheck ./...
+      run: |
+        # Finds bugs, performance issues, offers simplifications, and enforces style rules. https://staticcheck.io"
+        v=$(staticcheck ./...)
+        if [ -n "$v" ]; then echo "$v"; exit 1; fi
