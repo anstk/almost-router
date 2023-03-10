@@ -40,10 +40,10 @@ jobs:
         go install github.com/client9/misspell/cmd/misspell@latest
       
     # Run lints
-    - name:  misspell ./..
+    - name:  misspell ./*
       run: |
         # Correct commonly misspelled English words https://github.com/client9/misspell
-        v=$(misspell ./..)
+        v=$(misspell ./*) # misspell ./.. doesn't work properly, use misspell ./* instead
         if [ -n "$v" ]; then echo "$v"; exit 1; fi
         
         
