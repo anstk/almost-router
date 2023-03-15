@@ -7,5 +7,5 @@ errcheck ./...  # Check for unchecked errors in go programs. These unchecked err
 staticcheck ./...  # Finds bugs, performance issues, offers simplifications, and enforces style rules. https://staticcheck.io
 ```
 
-## [Go to action](https://github.com/andenv/almost-router/actions/workflows/lint.yml)
+## [Go to action](https://github.com/anstk/almost-router/actions/workflows/lint.yml)
 

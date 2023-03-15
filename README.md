@@ -4,9 +4,9 @@
 https://shields.io/category/build
 -->
 
-[![build](https://github.com/andenv/almost-router/actions/workflows/build.yml/badge.svg)](https://github.com/andenv/almost-router/actions/workflows/build.yml)
-[![lint](https://github.com/andenv/almost-router/actions/workflows/lint.yml/badge.svg)](doc/lint.md)
-[![lint](https://github.com/andenv/almost-router/actions/workflows/misspell.yml/badge.svg)](https://github.com/andenv/almost-router/actions/workflows/misspell.yml)
+[![build](https://github.com/anstk/almost-router/actions/workflows/build.yml/badge.svg)](https://github.com/anstk/almost-router/actions/workflows/build.yml)
+[![lint](https://github.com/anstk/almost-router/actions/workflows/lint.yml/badge.svg)](doc/lint.md)
+[![lint](https://github.com/anstk/almost-router/actions/workflows/misspell.yml/badge.svg)](https://github.com/anstk/almost-router/actions/workflows/misspell.yml)
 
 For study purposes only.
 
@@ -35,7 +35,7 @@ import (
 	"fmt"
 	"net/http"
 
-	almost "github.com/andenv/almost-router"
+	almost "github.com/anstk/almost-router"
 )
 
 func main() {
